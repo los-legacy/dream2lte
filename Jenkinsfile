@@ -29,12 +29,13 @@ node('ben') {
             }
             stage('RepoSync') { // for display purposes
                 sh label: 'RepoSync', script: 'source $SYSTEM_PATH/build_script/reposync.sh'
+                telegramSend()
             }
             stage('Build') { // for display purposes
-                sh label: 'Build', script: 'source $SYSTEM_PATH/build_script/build.sh'
+                //sh label: 'Build', script: 'source $SYSTEM_PATH/build_script/build.sh'
             }
             stage('OTA Upload') { // for display purposes
-                sh label: 'OTA Upload', script: 'source $SYSTEM_PATH/build_script/upload.sh'
+                //sh label: 'OTA Upload', script: 'source $SYSTEM_PATH/build_script/upload.sh'
             }
         }
     }
