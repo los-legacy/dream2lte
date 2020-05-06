@@ -2,8 +2,8 @@ node('ben') {
     timestamps {
         withEnv([
             'DEVICE=dream2lte',
-            'BRANCH=lineage-17.1',
-            'VERSION=17.1',
+            'BRANCH=p',
+            'VERSION=p',
             'ROMTYPE=UNOFFICIAL',
             'OTA_ROMTYPE=unofficial',
             'SYSTEM_PATH=/home/benlue/android/xenonhd',
