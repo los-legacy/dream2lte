@@ -6,8 +6,8 @@ node('ben') {
             'VERSION=17.1',
             'ROMTYPE=UNOFFICIAL',
             'OTA_ROMTYPE=unofficial',
-            'SYSTEM_PATH=/home/benlue/android/lineage',
-            'OUTPUT_PATH=/home/benlue/android/lineage/out/target/product',
+            'SYSTEM_PATH=/home/benlue/android/xenonhd',
+            'OUTPUT_PATH=/home/benlue/android/xenonhd/out/target/product',
             'URL=https://los-legacy.de',
             'SSH_URL=los-legacy.de',
             'LOCAL_MANIFESTS_URL=https://raw.githubusercontent.com/los-legacy/local_manifests/lineage-17.1/dream.xml',
@@ -34,7 +34,7 @@ node('ben') {
                 sh label: 'Build', script: 'source $SYSTEM_PATH/build_script/build.sh'
             }
             stage('OTA Upload') { // for display purposes
-                sh label: 'OTA Upload', script: 'source $SYSTEM_PATH/build_script/upload.sh'
+                //sh label: 'OTA Upload', script: 'source $SYSTEM_PATH/build_script/upload.sh'
             }
         }
     }
