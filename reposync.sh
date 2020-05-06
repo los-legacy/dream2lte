@@ -6,7 +6,7 @@ cd "${SYSTEM_PATH}" || exit
 export PATH=~/bin:$PATH
 git config --global user.name 'Jenkins'
 git config --global user.email 'jenkins@s3root.ovh'
-repo init -u https://github.com/LineageOS/android.git -b ${BRANCH}
+repo init -u https://github.com/TeamHorizon/platform_manifest.git -b ${BRANCH}
 rm -rf "${SYSTEM_PATH:?}"/"${LOCAL_MANIFESTS_PATH}"/
 mkdir -p "${LOCAL_MANIFESTS_PATH}"
 wget "${LOCAL_MANIFESTS_URL}" -O "${SYSTEM_PATH}"/"${LOCAL_MANIFESTS_PATH}"/"${DEVICE}".xml
