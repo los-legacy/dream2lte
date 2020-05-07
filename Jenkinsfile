@@ -12,7 +12,6 @@ node('ben') {
             'SSH_URL=los-legacy.de',
             'LOCAL_MANIFESTS_URL=https://raw.githubusercontent.com/los-legacy/local_manifests/lineage-17.1/dream.xml',
             'LOCAL_MANIFESTS_PATH=.repo/local_manifests',
-            'DEPLOY_BUILD_DATE =sh(returnStdout: true, script: "date -u +'%Y-%m-%dT%H:%M:%SZ'").trim()',
             ]) {
             stage('Preparation') { // for display purposes
                 checkout([$class: 'GitSCM', 
@@ -34,6 +33,9 @@ node('ben') {
                 //sh label: 'Build', script: 'source $SYSTEM_PATH/build_script/build.sh'
             }
             stage('OTA Upload') { // for display purposes
+                script {
+                    env.DEPLOY_BUILD_DATE = sh(returnStdout: true, script: "date -u +'%Y-%m-%dT%H:%M:%SZ'").trim()
+                }
                 echo "${DEPLOY_BUILD_DATE}"
                 //sh label: 'OTA Upload', script: 'source $SYSTEM_PATH/build_script/upload.sh'
             }
