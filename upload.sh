@@ -25,16 +25,16 @@ if [ -e "$OUTPUT_PATH"/"$FILENAME" ]; then
   
   BUILD_DATE=$(date -r "${OUT}"/build_date.txt "+%Y%m%d")
   echo "$BUILD_DATE"
-  MD5SUM=$(cat < "${OUTPUT_PATH}"/"${DEVICE}"/"${BRANCH}"-"$TARGET_DATE"-"${ROMTYPE}"-"${DEVICE}".zip.md5sum | awk '{ print $1 }')
-  FILESIZE=$(stat -c%s "${OUTPUT_PATH}"/"${DEVICE}"/"${BRANCH}"-"$TARGET_DATE"-"${ROMTYPE}"-"${DEVICE}".zip )       
+  MD5SUM=$(cat < "${OUTPUT_PATH}"/"${DEVICE}"/"${BRANCH}"-"${BUILD_DATE}"-"${ROMTYPE}"-"${DEVICE}".zip.md5sum | awk '{ print $1 }')
+  FILESIZE=$(stat -c%s "${OUTPUT_PATH}"/"${DEVICE}"/"${BRANCH}"-"${BUILD_DATE}"-"${ROMTYPE}"-"${DEVICE}".zip )       
   DATETIME=$(date -u +"%F %H:%M:%S")
   
   echo ""
-  cat "${OUTPUT_PATH}"/"${DEVICE}"/"${BRANCH}"-"$TARGET_DATE"-"${ROMTYPE}"-"${DEVICE}".zip.md5sum
+  cat "${OUTPUT_PATH}"/"${DEVICE}"/"${BRANCH}"-"${BUILD_DATE}"-"${ROMTYPE}"-"${DEVICE}".zip.md5sum
   echo ""
   echo "Übertrage Rom in Datenbank"
-  echo "URL: ${URL}/${DEVICE}/${BRANCH}-$TARGET_DATE-${ROMTYPE}-${DEVICE}.zip"
-  echo "Filename: ${BRANCH}-$BUILD_DATE-${ROMTYPE}-${DEVICE}.zip"
+  echo "URL: ${URL}/${DEVICE}/${BRANCH}-${BUILD_DATE}-${ROMTYPE}-${DEVICE}.zip"
+  echo "Filename: ${BRANCH}-${BUILD_DATE}-${ROMTYPE}-${DEVICE}.zip"
   echo "Device: ${DEVICE}"
   echo "OS Version: ${VERSION}"
   echo "Datetime: $DATETIME"
