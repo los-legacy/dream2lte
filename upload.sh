@@ -34,7 +34,7 @@ if [ -e "$OUTPUT_PATH"/"$FILENAME" ]; then
   echo ""
   echo "Übertrage Rom in Datenbank"
   echo "URL: ${URL}/${DEVICE}/${BRANCH}-$TARGET_DATE-${ROMTYPE}-${DEVICE}.zip"
-  echo "Filename: ${BRANCH}-$TARGET_DATE-${ROMTYPE}-${DEVICE}.zip"
+  echo "Filename: ${BRANCH}-$BUILD_DATE-${ROMTYPE}-${DEVICE}.zip"
   echo "Device: ${DEVICE}"
   echo "OS Version: ${VERSION}"
   echo "Datetime: $DATETIME"
