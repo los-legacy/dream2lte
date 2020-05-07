@@ -20,7 +20,7 @@ if [ -e "$OUTPUT_PATH"/"$FILENAME" ]; then
   BUILD_DATE=$(date -r "${OUT}"/build_date.txt "+%Y%m%d")
   MD5SUM=$(cat < "${OUTPUT_PATH}"/"${DEVICE}"/"${BRANCH}"-"${BUILD_DATE}"-"${ROMTYPE}"-"${DEVICE}".zip.md5sum | awk '{ print $1 }')
   FILESIZE=$(stat -c%s "${OUTPUT_PATH}"/"${DEVICE}"/"${BRANCH}"-"${BUILD_DATE}"-"${ROMTYPE}"-"${DEVICE}".zip )       
-  DATETIME=$(date -r "${OUT}"/build_date.txt +"+%F %H:%M:%S")
+  DATETIME=$(date -r "${OUT}"/build_date.txt "+%F %H:%M:%S")
   
   echo ""
   cat "${OUTPUT_PATH}"/"${DEVICE}"/"${BRANCH}"-"${BUILD_DATE}"-"${ROMTYPE}"-"${DEVICE}".zip.md5sum
