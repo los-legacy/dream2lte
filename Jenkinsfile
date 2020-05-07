@@ -13,10 +13,6 @@ node('ben') {
             'LOCAL_MANIFESTS_URL=https://raw.githubusercontent.com/los-legacy/local_manifests/lineage-17.1/dream.xml',
             'LOCAL_MANIFESTS_PATH=.repo/local_manifests', 
             ]) {
-            def date = new Date()
-            sdf = new SimpleDateFormat("MM/dd/yyyy HH:mm:ss")
-            def buildDate = sdf.format(date)
-            println "DEBUG: buildDate ==> " + buildDate
             stage('Preparation') { // for display purposes
                 checkout([$class: 'GitSCM', 
                 branches: [[name: "$BRANCH"]], 
