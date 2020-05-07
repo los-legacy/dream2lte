@@ -13,8 +13,11 @@ node('ben') {
             'LOCAL_MANIFESTS_URL=https://raw.githubusercontent.com/los-legacy/local_manifests/lineage-17.1/dream.xml',
             'LOCAL_MANIFESTS_PATH=.repo/local_manifests', 
             ]) {
+            def date = new Date()
+            sdf = new SimpleDateFormat("MM/dd/yyyy HH:mm:ss")
+            def buildDate = sdf.format(date)
+            println "DEBUG: buildDate ==> " + buildDate
             stage('Preparation') { // for display purposes
-            
                 checkout([$class: 'GitSCM', 
                 branches: [[name: "$BRANCH"]], 
                 doGenerateSubmoduleConfigurations: false, 
@@ -34,10 +37,6 @@ node('ben') {
                 //sh label: 'Build', script: 'source $SYSTEM_PATH/build_script/build.sh'
             }
             stage('OTA Upload') { // for display purposes
-                script {
-                DATE_TAG = java.time.LocalDate.now()
-                DATETIME_TAG = java.time.LocalDateTime.now()
-                }
                 //sh label: 'OTA Upload', script: 'source $SYSTEM_PATH/build_script/upload.sh'
             }
         }
