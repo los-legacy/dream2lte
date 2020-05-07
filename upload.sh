@@ -23,7 +23,7 @@ if [ -e "$OUTPUT_PATH"/"$FILENAME" ]; then
   
   echo "Erstelle MD5-Prüfsummmendatei"
   
-  BUILD_DATE=$(date -r build_date.txt "+%Y%m%d")
+  BUILD_DATE=$(date -r "${OUT}"/build_date.txt "+%Y%m%d")
   echo "$BUILD_DATE"
   MD5SUM=$(cat < "${OUTPUT_PATH}"/"${DEVICE}"/"${BRANCH}"-"$TARGET_DATE"-"${ROMTYPE}"-"${DEVICE}".zip.md5sum | awk '{ print $1 }')
   FILESIZE=$(stat -c%s "${OUTPUT_PATH}"/"${DEVICE}"/"${BRANCH}"-"$TARGET_DATE"-"${ROMTYPE}"-"${DEVICE}".zip )       
