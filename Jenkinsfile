@@ -30,12 +30,12 @@ node('ben') {
                 //sh label: 'RepoSync', script: 'source $SYSTEM_PATH/build_script/reposync.sh'
             }
             stage('Build') { // for display purposes
+                script {
+                    env.DEPLOY_BUILD_DATE = sh(returnStdout: true, script: "date -u +'%Y%m%d'").trim()
+                }                
                 //sh label: 'Build', script: 'source $SYSTEM_PATH/build_script/build.sh'
             }
             stage('OTA Upload') { // for display purposes
-                script {
-                    env.DEPLOY_BUILD_DATE = sh(returnStdout: true, script: "date -u +'%Y%m%d'").trim()
-                }
                 echo "${DEPLOY_BUILD_DATE}"
                 //sh label: 'OTA Upload', script: 'source $SYSTEM_PATH/build_script/upload.sh'
             }
