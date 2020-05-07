@@ -34,7 +34,10 @@ node('ben') {
                 //sh label: 'Build', script: 'source $SYSTEM_PATH/build_script/build.sh'
             }
             stage('OTA Upload') { // for display purposes
-                echo BUILD_DATE=$(date +%F-%T)
+                script {
+                DATE_TAG = java.time.LocalDate.now()
+                DATETIME_TAG = java.time.LocalDateTime.now()
+                }
                 //sh label: 'OTA Upload', script: 'source $SYSTEM_PATH/build_script/upload.sh'
             }
         }
