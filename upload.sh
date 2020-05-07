@@ -2,12 +2,6 @@
 # Copyright (C) 2020 The Los-Legacy Open Source Project
 # Mitch, Exodusnick, BenLue
 set +xe
-if [ -z "$*" ]; then
-  TARGET_DATE=$(date +"%Y%m%d");
-else
-  export TARGET_DATE="$*";
-fi
-
 cd "${SYSTEM_PATH}" || exit
 
 echo "$OUTPUT_PATH"
@@ -24,10 +18,9 @@ if [ -e "$OUTPUT_PATH"/"$FILENAME" ]; then
   echo "Erstelle MD5-Prüfsummmendatei"
   
   BUILD_DATE=$(date -r "${OUT}"/build_date.txt "+%Y%m%d")
-  echo "$BUILD_DATE"
   MD5SUM=$(cat < "${OUTPUT_PATH}"/"${DEVICE}"/"${BRANCH}"-"${BUILD_DATE}"-"${ROMTYPE}"-"${DEVICE}".zip.md5sum | awk '{ print $1 }')
   FILESIZE=$(stat -c%s "${OUTPUT_PATH}"/"${DEVICE}"/"${BRANCH}"-"${BUILD_DATE}"-"${ROMTYPE}"-"${DEVICE}".zip )       
-  DATETIME=$(date -u +"%F %H:%M:%S")
+  DATETIME=$(date -r "${OUT}"/build_date.txt +"+%F %H:%M:%S")
   
   echo ""
   cat "${OUTPUT_PATH}"/"${DEVICE}"/"${BRANCH}"-"${BUILD_DATE}"-"${ROMTYPE}"-"${DEVICE}".zip.md5sum
