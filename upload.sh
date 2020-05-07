@@ -23,6 +23,8 @@ if [ -e "$OUTPUT_PATH"/"$FILENAME" ]; then
   
   echo "Erstelle MD5-Prüfsummmendatei"
   
+  BUILD_DATE=$(date -r build_date.txt "+%Y%m%d")
+  echo "$BUILD_DATE"
   MD5SUM=$(cat < "${OUTPUT_PATH}"/"${DEVICE}"/"${BRANCH}"-"$TARGET_DATE"-"${ROMTYPE}"-"${DEVICE}".zip.md5sum | awk '{ print $1 }')
   FILESIZE=$(stat -c%s "${OUTPUT_PATH}"/"${DEVICE}"/"${BRANCH}"-"$TARGET_DATE"-"${ROMTYPE}"-"${DEVICE}".zip )       
   DATETIME=$(date -u +"%F %H:%M:%S")
@@ -39,10 +41,7 @@ if [ -e "$OUTPUT_PATH"/"$FILENAME" ]; then
   echo "Romtype: $OTA_ROMTYPE"
   echo "MD5SUM: $MD5SUM"
   echo "SIZE: $FILESIZE"
-  
-  find ${OUTPUT_PATH} >>/tmp/debug.log
-  cat /tmp/debug.log
-  
+   
   NO_SUCCESS=1  
     while [ "$NO_SUCCESS" != "0" ]; do
       scp "${OUTPUT_PATH}"/"${DEVICE}"/"${BRANCH}"-"$TARGET_DATE"-"${ROMTYPE}"-"${DEVICE}".zip "$USER"@"$SSH_URL":/var/www/html/files/"$DEVICE"/
