@@ -34,7 +34,7 @@ node('ben') {
             }
             stage('OTA Upload') { // for display purposes
                 script {
-                    env.DEPLOY_BUILD_DATE = sh(returnStdout: true, script: "date -u +'%Y-%m-%dT%H:%M:%SZ'").trim()
+                    env.DEPLOY_BUILD_DATE = sh(returnStdout: true, script: "date -u +'%Y-%m-%d'").trim()
                 }
                 echo "${DEPLOY_BUILD_DATE}"
                 //sh label: 'OTA Upload', script: 'source $SYSTEM_PATH/build_script/upload.sh'
