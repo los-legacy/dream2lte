@@ -38,7 +38,7 @@ node('ben') {
             stage('OTA Upload') { // for display purposes
                 echo "${DEPLOY_BUILD_DATE}"
                 sh "printenv | sort"
-                sh "echo $OUT"
+                sh "echo ${OUT}"
                 //sh label: 'OTA Upload', script: 'source $SYSTEM_PATH/build_script/upload.sh'
             }
         }
